@@ -36,6 +36,64 @@ import nibabel as nib
 from modules.path_utils import create_result_dir,create_dir,get_main_paths,get_all_dirs
 
 
+
+def create_master_file(train_subjects,
+                       data_set_df,
+                       null_subject_path,
+                       test_flair_path,
+                       test_flair_to_mni,
+                       test_mask_path
+                       ):
+        
+
+    master_file_text_lines  = []
+    trainstring       = ""
+    test_list         = []
+    test_dict         = {}
+    row_number        = 0
+    
+    flair_path = ""
+    mask_path = ""
+    flair_to_mni = ""
+    
+    for train_index,subject in enumerate(train_subjects):
+        
+        patient_df                =  data_set_df.loc[data_set_df['subject'] == subject,:]
+        flair_path                =  patient_df['biascorrected_bet_image_path'].values[0]
+        flair_to_mni              =  patient_df['MNI_xfm_path'].values[0]
+        mask_path_n               =  os.path.join(os.path.dirname(flair_path),"WMHmask.nii")
+        mask_path_g               =  os.path.join(os.path.dirname(flair_path),"WMHmask.nii.gz")
+        
+        if os.path.isfile(mask_path_n):
+            mask_path = mask_path_n
+        
+        elif os.path.isfile(mask_path_g):
+            mask_path = mask_path_g
+             
+        
+        if flair_path or flair_to_mni or mask_path:
+            row_number+=1
+            trainstring+=str(row_number)+","
+                                
+            master_file_train=    flair_path+" " +flair_to_mni+" "+mask_path
+            master_file_text_lines.append(master_file_train)
+            
+    trainstring = trainstring[:-1]
+             
+    if test_flair_path or test_flair_to_mni or test_mask_path:
+        row_number+=1
+        test_list.append(row_number)
+        master_file_test=    test_flair_path+" " +test_flair_to_mni+" "+test_mask_path
+        master_file_text_lines.append(master_file_test)
+        
+    master_file_path = join(null_subject_path,"masterfile.txt") 
+    with open(master_file_path, 'w') as f:
+        f.write('\n'.join(master_file_text_lines))
+        
+        
+    return  master_file_path,trainstring,row_number
+
+
 def create_challange_table(dataset_path,index_for_patient):
     
     dataset_name = os.path.basename(dataset_path)

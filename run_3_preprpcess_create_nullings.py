@@ -35,7 +35,7 @@ create_dir(nulled_images_path)
 data_pp_path                          =     os.path.join(datasets_prepared_path,"data_prepared_data.xlsx")
 
 
-for subject in subject_list[48:]:
+for subject in subject_list[:]:
     
     print(subject)
     
