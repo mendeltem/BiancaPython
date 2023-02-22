@@ -3,13 +3,13 @@
 """
 Created on Tue Feb 21 13:21:27 2023
 
-@author: temuuleu
-
-
 Prepare the dataset for bianca training
 
-"""
 
+Create Data Location Table where collect all the necesarry data location and 
+save it in an excel table.
+
+"""
 
 import os
 import pandas as pd
@@ -51,6 +51,7 @@ for d_i, dataset_path in enumerate(datasets_list):
         
   
     if "belove" in  base_name.lower():
+
         belove_df,index_for_patient = create_belove_table(dataset_path,index_for_patient)
         
         all_patient_dataset_df,subject_index= create_tabel_for_all_subjects(all_patient_dataset_df,

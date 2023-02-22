@@ -1,0 +1,2174 @@
+qt.qpa.xcb: QXcbConnection: XCB error: 145 (Unknown), sequence: 181, resource id: 0, major code: 139 (Unknown), minor code: 20
+/home/temuuleu/CSB_NeuroRad/temuuleu/Projekts/BELOVE/Bianca_Project/bianca_version_3/run_2_preprocess_2_create_prepared_directory.py:379: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
+  fig, axes =  plt.subplots(1,2,constrained_layout = True)
+sub-01
+found reoriented_image_path
+found biascorrected_image_path
+found biascorrected_bet_image_path
+found MNI_xfm_paths  {MNI_xfm_paths}
+found MNI_xfm_path  flair_to_mni
+run mask normalization
+0
+0
+0
+0
+0
+0
+0
+0
+0
+1
+1
+1
+1
+1
+1
+1
+2
+2
+2
+2
+2
+3
+3
+3
+3
+3
+3
+3
+4
+4
+4
+4
+4
+5
+5
+5
+5
+5
+5
+5
+6
+23.0
+6
+23.0
+6
+23.0
+6
+23.0
+6
+23.0
+7
+141.0
+7
+141.0
+7
+141.0
+7
+141.0
+7
+141.0
+7
+141.0
+7
+141.0
+8
+47.0
+8
+47.0
+8
+47.0
+8
+47.0
+8
+47.0
+9
+120.0
+9
+120.0
+9
+120.0
+9
+120.0
+9
+120.0
+9
+120.0
+9
+120.0
+10
+10
+10
+10
+10
+11
+11
+11
+11
+11
+11
+11
+12
+12
+12
+12
+12
+13
+44.0
+13
+44.0
+13
+44.0
+13
+44.0
+13
+44.0
+13
+44.0
+13
+44.0
+14
+141.0
+14
+141.0
+14
+141.0
+14
+141.0
+14
+141.0
+15
+478.0
+15
+478.0
+15
+478.0
+15
+478.0
+15
+478.0
+15
+478.0
+15
+478.0
+16
+473.0
+16
+473.0
+16
+473.0
+16
+473.0
+16
+473.0
+17
+1043.0
+17
+1043.0
+17
+1043.0
+17
+1043.0
+17
+1043.0
+17
+1043.0
+17
+1043.0
+18
+1642.0
+18
+1642.0
+18
+1642.0
+18
+1642.0
+18
+1642.0
+19
+801.0
+19
+801.0
+19
+801.0
+19
+801.0
+19
+801.0
+19
+801.0
+19
+801.0
+20
+295.0
+20
+295.0
+20
+295.0
+20
+295.0
+20
+295.0
+21
+18.0
+21
+18.0
+21
+18.0
+21
+18.0
+21
+18.0
+21
+18.0
+21
+18.0
+22
+36.0
+22
+36.0
+22
+36.0
+22
+36.0
+22
+36.0
+23
+56.0
+23
+56.0
+23
+56.0
+23
+56.0
+23
+56.0
+23
+56.0
+23
+56.0
+24
+20.0
+24
+20.0
+24
+20.0
+24
+20.0
+24
+20.0
+25
+23.0
+25
+23.0
+25
+23.0
+25
+23.0
+25
+23.0
+25
+23.0
+25
+23.0
+26
+26
+26
+26
+26
+27
+27
+27
+27
+27
+27
+27
+28
+28
+28
+28
+28
+29
+Traceback (most recent call last):
+  File "/home/temuuleu/CSB_NeuroRad/temuuleu/Projekts/BELOVE/Bianca_Project/bianca_version_3/run_2_preprocess_2_create_prepared_directory.py", line 359, in <module>
+    flair_image_2d                       = np.zeros(biascorrected_bet_3d[:,:,u].shape+(3,))
+IndexError: index 29 is out of bounds for axis 2 with size 29
+sub-01
+found reoriented_image_path
+found biascorrected_image_path
+found biascorrected_bet_image_path
+found MNI_xfm_paths  {MNI_xfm_paths}
+found MNI_xfm_path  flair_to_mni
+run mask normalization
+sub-02
+run reoriented_image_path
+230221-21:16:17,988 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpjd65r8sd/flair".
+230221-21:16:17,993 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:16:19,477 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.4391129999999999s.
+run biascorrected_image
+230221-21:16:19,941 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpy9xmdf86/biascorr".
+230221-21:16:19,945 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:16:28,520 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 8.569998s.
+run biascorrected_bet
+230221-21:16:28,528 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmprvj1mmz7/skullstrip".
+230221-21:16:28,535 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:16:30,620 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.08048s.
+run flair normalization
+run mask normalization
+sub-03
+run reoriented_image_path
+230221-21:17:16,362 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp_ahibeea/flair".
+230221-21:17:16,365 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:17:17,155 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.785502s.
+run biascorrected_image
+230221-21:17:17,160 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp0u5fulhj/biascorr".
+230221-21:17:17,162 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:17:25,682 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 8.515204s.
+run biascorrected_bet
+230221-21:17:25,687 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmppsls7mme/skullstrip".
+230221-21:17:25,691 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:17:27,796 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.100126s.
+run flair normalization
+run mask normalization
+sub-04
+run reoriented_image_path
+230221-21:18:12,590 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpwzcasclw/flair".
+230221-21:18:12,594 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:18:13,402 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.806023s.
+run biascorrected_image
+230221-21:18:13,418 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp3qbur2nr/biascorr".
+230221-21:18:13,420 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:18:22,203 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 8.778055s.
+run biascorrected_bet
+230221-21:18:22,208 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpqory83aw/skullstrip".
+230221-21:18:22,213 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:18:24,280 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.063071s.
+run flair normalization
+run mask normalization
+sub-05
+run reoriented_image_path
+230221-21:19:08,264 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmphqbzntcc/flair".
+230221-21:19:08,267 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:19:09,115 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.84654s.
+run biascorrected_image
+230221-21:19:09,121 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp6_i22qfs/biascorr".
+230221-21:19:09,124 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:19:17,988 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 8.855947s.
+run biascorrected_bet
+230221-21:19:17,995 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpyty6y2af/skullstrip".
+230221-21:19:18,0 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:19:20,74 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.070087s.
+run flair normalization
+run mask normalization
+sub-06
+run reoriented_image_path
+230221-21:20:02,179 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp0badjeg6/flair".
+230221-21:20:02,183 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:20:03,93 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.905356s.
+run biascorrected_image
+230221-21:20:03,97 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpebug8y47/biascorr".
+230221-21:20:03,99 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:20:17,927 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.824311s.
+run biascorrected_bet
+230221-21:20:17,935 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpuhoglf3v/skullstrip".
+230221-21:20:17,938 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:20:20,284 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.34179s.
+run flair normalization
+run mask normalization
+sub-07
+run reoriented_image_path
+230221-21:21:28,436 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpekboouee/flair".
+230221-21:21:28,441 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:21:29,366 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.921287s.
+run biascorrected_image
+230221-21:21:29,371 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp7qd26yfc/biascorr".
+230221-21:21:29,373 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:21:44,140 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.762553s.
+run biascorrected_bet
+230221-21:21:44,146 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmprqz3oegr/skullstrip".
+230221-21:21:44,152 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:21:46,472 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.315169s.
+run flair normalization
+run mask normalization
+sub-08
+run reoriented_image_path
+230221-21:22:53,993 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpx479t20v/flair".
+230221-21:22:53,998 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:22:54,867 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.865476s.
+run biascorrected_image
+230221-21:22:54,872 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmprvjl8519/biascorr".
+230221-21:22:54,875 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:23:09,588 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.709315s.
+run biascorrected_bet
+230221-21:23:09,597 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp84_oxwuu/skullstrip".
+230221-21:23:09,602 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:23:11,959 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.353003s.
+run flair normalization
+run mask normalization
+sub-09
+run reoriented_image_path
+230221-21:24:19,372 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp8ipnvgkd/flair".
+230221-21:24:19,375 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:24:20,260 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.881045s.
+run biascorrected_image
+230221-21:24:20,266 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp04zv49q2/biascorr".
+230221-21:24:20,268 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:24:34,908 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.63537s.
+run biascorrected_bet
+230221-21:24:34,924 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpvquz313l/skullstrip".
+230221-21:24:34,929 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:24:37,324 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.391106s.
+run flair normalization
+run mask normalization
+sub-10
+run reoriented_image_path
+230221-21:25:43,119 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpav5n2wc5/flair".
+230221-21:25:43,123 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:25:44,56 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.92904s.
+run biascorrected_image
+230221-21:25:44,61 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpxq6kl2uu/biascorr".
+230221-21:25:44,63 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:25:58,606 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.538972s.
+run biascorrected_bet
+230221-21:25:58,614 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp5uj46nmt/skullstrip".
+230221-21:25:58,619 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:26:00,976 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.352009s.
+run flair normalization
+run mask normalization
+sub-11
+run reoriented_image_path
+230221-21:27:08,401 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpog04mnbe/flair".
+230221-21:27:08,405 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:27:09,337 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.92737s.
+run biascorrected_image
+230221-21:27:09,343 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmplba4ulkc/biascorr".
+230221-21:27:09,346 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:27:24,327 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.976547s.
+run biascorrected_bet
+230221-21:27:24,334 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpzpyrqt76/skullstrip".
+230221-21:27:24,340 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:27:26,702 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.357495s.
+run flair normalization
+run mask normalization
+sub-12
+run reoriented_image_path
+230221-21:28:29,616 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmph7xyma6u/flair".
+230221-21:28:29,619 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:28:30,524 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.900708s.
+run biascorrected_image
+230221-21:28:30,529 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp8l_72cey/biascorr".
+230221-21:28:30,531 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:28:45,200 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.664491s.
+run biascorrected_bet
+230221-21:28:45,216 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpow37gpyz/skullstrip".
+230221-21:28:45,222 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:28:47,620 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.393679s.
+run flair normalization
+run mask normalization
+sub-13
+run reoriented_image_path
+230221-21:29:56,730 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpylgig5_b/flair".
+230221-21:29:56,733 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:29:57,668 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.930457s.
+run biascorrected_image
+230221-21:29:57,674 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp7z2em1rm/biascorr".
+230221-21:29:57,678 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:30:12,373 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.690839s.
+run biascorrected_bet
+230221-21:30:12,379 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpab6k_cq5/skullstrip".
+230221-21:30:12,384 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:30:14,707 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.319424s.
+run flair normalization
+run mask normalization
+sub-14
+run reoriented_image_path
+230221-21:31:21,262 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpftfzndov/flair".
+230221-21:31:21,266 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:31:22,127 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.859364s.
+run biascorrected_image
+230221-21:31:22,132 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpck9686is/biascorr".
+230221-21:31:22,134 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:31:30,802 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 8.66103s.
+run biascorrected_bet
+230221-21:31:30,810 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpfqrreu1p/skullstrip".
+230221-21:31:30,816 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:31:32,915 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.095197s.
+run flair normalization
+run mask normalization
+sub-15
+run reoriented_image_path
+230221-21:32:17,865 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpa7_m08rv/flair".
+230221-21:32:17,868 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:32:18,759 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.88715s.
+run biascorrected_image
+230221-21:32:18,765 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpu6q4z57f/biascorr".
+230221-21:32:18,768 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:32:33,515 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.743159s.
+run biascorrected_bet
+230221-21:32:33,520 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp6hl175l_/skullstrip".
+230221-21:32:33,525 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:32:35,884 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.354469s.
+run flair normalization
+run mask normalization
+sub-16
+run reoriented_image_path
+230221-21:33:46,637 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpsiqvn0yw/flair".
+230221-21:33:46,642 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:33:47,564 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.917549s.
+run biascorrected_image
+230221-21:33:47,568 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpgne7ni5h/biascorr".
+230221-21:33:47,570 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:34:02,181 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.607047s.
+run biascorrected_bet
+230221-21:34:02,187 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp4zu6dbli/skullstrip".
+230221-21:34:02,192 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:34:04,542 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.346732s.
+run flair normalization
+run mask normalization
+sub-17
+run reoriented_image_path
+230221-21:35:10,691 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpxy3mk9xt/flair".
+230221-21:35:10,694 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:35:11,581 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.882247s.
+run biascorrected_image
+230221-21:35:11,587 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp17mndx5o/biascorr".
+230221-21:35:11,590 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:35:26,621 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 15.026767s.
+run biascorrected_bet
+230221-21:35:26,628 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpa700aw67/skullstrip".
+230221-21:35:26,632 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:35:28,956 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.319477s.
+run flair normalization
+run mask normalization
+sub-18
+run reoriented_image_path
+230221-21:36:37,39 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpgdnt053e/flair".
+230221-21:36:37,44 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:36:37,859 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.813612s.
+run biascorrected_image
+230221-21:36:37,863 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpjwiv_cmt/biascorr".
+230221-21:36:37,865 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:36:46,592 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 8.723332s.
+run biascorrected_bet
+230221-21:36:46,598 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp6rtciqs1/skullstrip".
+230221-21:36:46,602 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:36:48,652 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.045542s.
+run flair normalization
+run mask normalization
+sub-19
+run reoriented_image_path
+230221-21:37:27,761 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpor9tgtxv/flair".
+230221-21:37:27,765 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:37:28,621 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.851845s.
+run biascorrected_image
+230221-21:37:28,626 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpodkje1sz/biascorr".
+230221-21:37:28,629 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:37:37,245 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 8.611664s.
+run biascorrected_bet
+230221-21:37:37,252 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpiep_h1f6/skullstrip".
+230221-21:37:37,259 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:37:39,332 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.068911s.
+run flair normalization
+run mask normalization
+sub-20
+run reoriented_image_path
+230221-21:38:19,857 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpp4iqlyiu/flair".
+230221-21:38:19,861 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:38:20,839 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.974283s.
+run biascorrected_image
+230221-21:38:20,844 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp0e_l67df/biascorr".
+230221-21:38:20,847 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:38:35,262 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.41021s.
+run biascorrected_bet
+230221-21:38:35,270 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpooea5q5t/skullstrip".
+230221-21:38:35,275 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:38:53,880 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 18.600945s.
+run flair normalization
+run mask normalization
+sub-21
+run reoriented_image_path
+230221-21:39:50,349 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpsah072nu/flair".
+230221-21:39:50,353 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:39:51,383 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.026177s.
+run biascorrected_image
+230221-21:39:51,387 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpf0lk8vp9/biascorr".
+230221-21:39:51,389 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:40:05,211 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 13.817279s.
+run biascorrected_bet
+230221-21:40:05,219 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpa90elov8/skullstrip".
+230221-21:40:05,225 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:40:07,523 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.292106s.
+run flair normalization
+run mask normalization
+sub-22
+run reoriented_image_path
+230221-21:41:00,285 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp39s124yh/flair".
+230221-21:41:00,289 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:41:01,358 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.0649s.
+run biascorrected_image
+230221-21:41:01,363 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpg486myee/biascorr".
+230221-21:41:01,365 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:41:15,10 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 13.640114s.
+run biascorrected_bet
+230221-21:41:15,22 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpkh1badh9/skullstrip".
+230221-21:41:15,27 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:41:17,403 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.371714s.
+run flair normalization
+run mask normalization
+sub-23
+run reoriented_image_path
+230221-21:42:06,365 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp53f2g8bd/flair".
+230221-21:42:06,369 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:42:07,444 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.071281s.
+run biascorrected_image
+230221-21:42:07,454 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp7bsf08hm/biascorr".
+230221-21:42:07,457 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:42:21,769 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.307163s.
+run biascorrected_bet
+230221-21:42:21,775 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp0rvasu67/skullstrip".
+230221-21:42:21,779 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:42:24,33 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.249626s.
+run flair normalization
+run mask normalization
+sub-24
+run reoriented_image_path
+230221-21:43:27,143 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpp7d7o8cr/flair".
+230221-21:43:27,147 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:43:28,203 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.051456s.
+run biascorrected_image
+230221-21:43:28,209 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpgwz9uc84/biascorr".
+230221-21:43:28,213 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:43:42,216 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 13.998794s.
+run biascorrected_bet
+230221-21:43:42,221 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp5g69hrz5/skullstrip".
+230221-21:43:42,227 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:43:44,507 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.275572s.
+run flair normalization
+run mask normalization
+sub-25
+run reoriented_image_path
+230221-21:44:40,626 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmploruf7sx/flair".
+230221-21:44:40,630 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:44:41,665 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.02907s.
+run biascorrected_image
+230221-21:44:41,671 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp1m7lzgmq/biascorr".
+230221-21:44:41,674 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:44:55,445 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 13.766495s.
+run biascorrected_bet
+230221-21:44:55,452 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp0q05b7gm/skullstrip".
+230221-21:44:55,457 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:44:57,769 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.307694s.
+run flair normalization
+run mask normalization
+sub-26
+run reoriented_image_path
+230221-21:45:53,373 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpqxu1w83_/flair".
+230221-21:45:53,378 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:45:54,486 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.104267s.
+run biascorrected_image
+230221-21:45:54,491 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp7_xhm51_/biascorr".
+230221-21:45:54,494 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:46:08,209 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 13.710688s.
+run biascorrected_bet
+230221-21:46:08,214 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpunfjanwc/skullstrip".
+230221-21:46:08,219 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:46:10,543 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.320156s.
+run flair normalization
+run mask normalization
+sub-27
+run reoriented_image_path
+230221-21:47:03,670 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpn1ugsj8j/flair".
+230221-21:47:03,673 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:47:04,702 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.024834s.
+run biascorrected_image
+230221-21:47:04,708 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp5j1upc9x/biascorr".
+230221-21:47:04,710 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:47:18,701 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 13.987293s.
+run biascorrected_bet
+230221-21:47:18,707 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpnym45lxq/skullstrip".
+230221-21:47:18,711 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:47:20,992 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.276896s.
+run flair normalization
+run mask normalization
+sub-28
+run reoriented_image_path
+230221-21:48:17,289 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp6w307j65/flair".
+230221-21:48:17,293 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:48:18,313 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.016775s.
+run biascorrected_image
+230221-21:48:18,319 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp6f0xqf9f/biascorr".
+230221-21:48:18,321 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:48:32,260 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 13.934707s.
+run biascorrected_bet
+230221-21:48:32,265 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpvtae6tpc/skullstrip".
+230221-21:48:32,269 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:48:34,561 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.287997s.
+run flair normalization
+run mask normalization
+sub-29
+run reoriented_image_path
+230221-21:49:27,137 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpfhmfte4z/flair".
+230221-21:49:27,141 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:49:28,167 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.022201s.
+run biascorrected_image
+230221-21:49:28,172 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmprq9hp90e/biascorr".
+230221-21:49:28,173 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:49:42,79 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 13.90139s.
+run biascorrected_bet
+230221-21:49:42,84 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpm4kgj_49/skullstrip".
+230221-21:49:42,88 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:49:44,358 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.265277s.
+run flair normalization
+run mask normalization
+sub-30
+run reoriented_image_path
+230221-21:50:38,986 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp6lu6c1z6/flair".
+230221-21:50:38,989 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:50:40,69 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.076602s.
+run biascorrected_image
+230221-21:50:40,74 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpc7fkbe7c/biascorr".
+230221-21:50:40,75 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:50:53,776 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 13.696349s.
+run biascorrected_bet
+230221-21:50:53,781 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmppwauid3y/skullstrip".
+230221-21:50:53,785 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:50:56,148 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.358367s.
+run flair normalization
+run mask normalization
+sub-31
+run reoriented_image_path
+230221-21:51:46,772 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpgemoz0na/flair".
+230221-21:51:46,776 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:51:47,815 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.035577s.
+run biascorrected_image
+230221-21:51:47,820 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpep6hbpfk/biascorr".
+230221-21:51:47,822 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:52:02,326 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.499543s.
+run biascorrected_bet
+230221-21:52:02,334 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp9dijfqlk/skullstrip".
+230221-21:52:02,339 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:52:09,492 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 7.148963s.
+run flair normalization
+run mask normalization
+sub-32
+run reoriented_image_path
+230221-21:53:01,852 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpf4fl_0_y/flair".
+230221-21:53:01,855 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:53:02,908 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.048622s.
+run biascorrected_image
+230221-21:53:02,913 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp1l64pk8m/biascorr".
+230221-21:53:02,914 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:53:16,964 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.046636s.
+run biascorrected_bet
+230221-21:53:16,970 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpcc1igb6j/skullstrip".
+230221-21:53:16,974 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:53:19,303 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.325063s.
+run flair normalization
+run mask normalization
+sub-33
+run reoriented_image_path
+230221-21:54:15,940 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp7cydcr32/flair".
+230221-21:54:15,943 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:54:16,964 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.016969s.
+run biascorrected_image
+230221-21:54:16,968 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpodgcg_g4/biascorr".
+230221-21:54:16,970 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:54:30,953 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 13.979224s.
+run biascorrected_bet
+230221-21:54:30,959 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpdzt6tutj/skullstrip".
+230221-21:54:30,967 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:54:33,216 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.244704s.
+run flair normalization
+run mask normalization
+sub-34
+run reoriented_image_path
+230221-21:55:29,287 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp59r_91hg/flair".
+230221-21:55:29,292 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:55:30,339 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.0428250000000001s.
+run biascorrected_image
+230221-21:55:30,343 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp_fg03g21/biascorr".
+230221-21:55:30,345 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:55:44,101 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 13.751697s.
+run biascorrected_bet
+230221-21:55:44,106 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp3rgzylng/skullstrip".
+230221-21:55:44,110 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:55:46,471 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.357343s.
+run flair normalization
+run mask normalization
+sub-35
+run reoriented_image_path
+230221-21:56:45,645 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpvkgc3wvh/flair".
+230221-21:56:45,649 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:56:46,695 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.041855s.
+run biascorrected_image
+230221-21:56:46,702 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp6vdtkp5p/biascorr".
+230221-21:56:46,705 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:57:00,518 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 13.80885s.
+run biascorrected_bet
+230221-21:57:00,524 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpxrjrn_8k/skullstrip".
+230221-21:57:00,528 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:57:02,805 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.272784s.
+run flair normalization
+run mask normalization
+sub-36
+run reoriented_image_path
+230221-21:57:56,452 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpfhp1life/flair".
+230221-21:57:56,456 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:57:57,594 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.134457s.
+run biascorrected_image
+230221-21:57:57,599 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpxwwqov49/biascorr".
+230221-21:57:57,601 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:58:11,312 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 13.707696s.
+run biascorrected_bet
+230221-21:58:11,317 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpnimxizop/skullstrip".
+230221-21:58:11,321 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:58:13,632 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.306396s.
+run flair normalization
+run mask normalization
+sub-37
+run reoriented_image_path
+230221-21:59:09,124 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp5o_7c1lg/flair".
+230221-21:59:09,128 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-21:59:10,212 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.080413s.
+run biascorrected_image
+230221-21:59:10,217 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp9i5z5yfi/biascorr".
+230221-21:59:10,219 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-21:59:24,153 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 13.930776999999999s.
+run biascorrected_bet
+230221-21:59:24,161 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpz7unj_wr/skullstrip".
+230221-21:59:24,165 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-21:59:28,139 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 3.970101s.
+run flair normalization
+run mask normalization
+sub-38
+run reoriented_image_path
+230221-22:00:26,187 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp1n0iesfv/flair".
+230221-22:00:26,191 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:00:27,272 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.076599s.
+run biascorrected_image
+230221-22:00:27,277 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp_a7a33x_/biascorr".
+230221-22:00:27,278 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:00:41,105 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 13.822172s.
+run biascorrected_bet
+230221-22:00:41,110 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp2o2a380q/skullstrip".
+230221-22:00:41,114 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:00:44,970 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 3.851122s.
+run flair normalization
+run mask normalization
+sub-39
+run reoriented_image_path
+230221-22:01:35,52 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpdofl_ye7/flair".
+230221-22:01:35,55 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:01:36,465 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.405468s.
+run biascorrected_image
+230221-22:01:36,471 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp5qo3wf55/biascorr".
+230221-22:01:36,475 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:01:50,253 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 13.774103s.
+run biascorrected_bet
+230221-22:01:50,259 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmplkq2yhms/skullstrip".
+230221-22:01:50,264 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:01:52,586 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.316421s.
+run flair normalization
+run mask normalization
+sub-40
+run reoriented_image_path
+230221-22:02:51,707 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpmqbg8msr/flair".
+230221-22:02:51,715 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:02:52,759 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.040357s.
+run biascorrected_image
+230221-22:02:52,764 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmph24z4kh4/biascorr".
+230221-22:02:52,766 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:03:06,855 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.084701s.
+run biascorrected_bet
+230221-22:03:06,898 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpejkan0e7/skullstrip".
+230221-22:03:06,904 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:03:09,213 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.30407s.
+run flair normalization
+run mask normalization
+sub-41
+run reoriented_image_path
+230221-22:04:07,16 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpxflm1pgr/flair".
+230221-22:04:07,20 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:04:08,59 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.034715s.
+run biascorrected_image
+230221-22:04:08,71 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp3y9fohr5/biascorr".
+230221-22:04:08,73 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:04:22,161 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.083141s.
+run biascorrected_bet
+230221-22:04:22,168 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpurg2n_vy/skullstrip".
+230221-22:04:22,173 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:04:24,427 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.249865s.
+run flair normalization
+run mask normalization
+sub-42
+run reoriented_image_path
+230221-22:05:22,554 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp8pgrpona/flair".
+230221-22:05:22,558 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:05:23,496 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.934596s.
+run biascorrected_image
+230221-22:05:23,501 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmptuyhyeek/biascorr".
+230221-22:05:23,503 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:05:37,937 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.430624s.
+run biascorrected_bet
+230221-22:05:37,943 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp169ed_q7/skullstrip".
+230221-22:05:37,946 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:05:41,788 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 3.8381600000000002s.
+run flair normalization
+run mask normalization
+sub-43
+run reoriented_image_path
+230221-22:06:29,960 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpn2iouuq2/flair".
+230221-22:06:29,963 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:06:30,916 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.948634s.
+run biascorrected_image
+230221-22:06:30,922 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp8xn9uupg/biascorr".
+230221-22:06:30,924 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:06:45,477 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.548434s.
+run biascorrected_bet
+230221-22:06:45,483 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpnectmbb9/skullstrip".
+230221-22:06:45,487 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:06:49,281 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 3.789245s.
+run flair normalization
+run mask normalization
+sub-44
+run reoriented_image_path
+230221-22:07:40,367 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpbsmc80yz/flair".
+230221-22:07:40,371 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:07:41,431 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.055985s.
+run biascorrected_image
+230221-22:07:41,437 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpxh7moa7s/biascorr".
+230221-22:07:41,439 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:07:56,36 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.593339s.
+run biascorrected_bet
+230221-22:07:56,41 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpjmplqvc3/skullstrip".
+230221-22:07:56,46 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:07:58,373 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.322532s.
+run flair normalization
+run mask normalization
+sub-45
+run reoriented_image_path
+230221-22:08:51,935 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpvnlgib7j/flair".
+230221-22:08:51,938 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:08:52,888 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.946031s.
+run biascorrected_image
+230221-22:08:52,893 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpx69yj5os/biascorr".
+230221-22:08:52,896 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:09:07,438 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.537956s.
+run biascorrected_bet
+230221-22:09:07,446 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp_m7yoq1b/skullstrip".
+230221-22:09:07,452 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:09:16,164 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 8.709834s.
+run flair normalization
+run mask normalization
+sub-46
+run reoriented_image_path
+230221-22:10:04,901 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp3p_za1zh/flair".
+230221-22:10:04,904 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:10:05,872 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.963824s.
+run biascorrected_image
+230221-22:10:05,877 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp3lu95m8i/biascorr".
+230221-22:10:05,879 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:10:20,762 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.878326s.
+run biascorrected_bet
+230221-22:10:20,768 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpiu2q8dhf/skullstrip".
+230221-22:10:20,772 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:10:24,601 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 3.824235s.
+run flair normalization
+run mask normalization
+sub-47
+run reoriented_image_path
+230221-22:11:12,346 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp14oiz83p/flair".
+230221-22:11:12,350 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:11:13,320 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.965744s.
+run biascorrected_image
+230221-22:11:13,325 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmprduz6emh/biascorr".
+230221-22:11:13,326 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:11:27,897 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.566604s.
+run biascorrected_bet
+230221-22:11:27,902 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp2h7ka6u3/skullstrip".
+230221-22:11:27,906 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:11:31,784 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 3.872979s.
+run flair normalization
+run mask normalization
+sub-48
+run reoriented_image_path
+230221-22:12:22,170 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpmogrbcqo/flair".
+230221-22:12:22,173 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:12:23,106 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.929024s.
+run biascorrected_image
+230221-22:12:23,111 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpd0fumavu/biascorr".
+230221-22:12:23,113 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:12:37,726 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.609897s.
+run biascorrected_bet
+230221-22:12:37,733 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp6gnwqfxw/skullstrip".
+230221-22:12:37,738 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:12:39,994 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.251589s.
+run flair normalization
+run mask normalization
+sub-49
+run reoriented_image_path
+230221-22:13:28,845 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpfvp6k8a9/flair".
+230221-22:13:28,849 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:13:29,840 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.987205s.
+run biascorrected_image
+230221-22:13:29,846 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpy72gda2e/biascorr".
+230221-22:13:29,849 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:13:44,373 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.51904s.
+run biascorrected_bet
+230221-22:13:44,380 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpl3rjwrq0/skullstrip".
+230221-22:13:44,385 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:13:49,824 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 5.435549s.
+run flair normalization
+run mask normalization
+sub-50
+run reoriented_image_path
+230221-22:14:36,0 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpdagea_d2/flair".
+230221-22:14:36,3 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:14:36,926 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.919077s.
+run biascorrected_image
+230221-22:14:36,931 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp5c4mqzu4/biascorr".
+230221-22:14:36,934 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:14:51,439 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.500449s.
+run biascorrected_bet
+230221-22:14:51,444 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpr6h024tt/skullstrip".
+230221-22:14:51,448 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:14:55,285 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 3.833s.
+run flair normalization
+run mask normalization
+sub-51
+run reoriented_image_path
+230221-22:15:47,643 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpfoo9szlg/flair".
+230221-22:15:47,646 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:15:48,553 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.903394s.
+run biascorrected_image
+230221-22:15:48,558 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp3ij_tcg_/biascorr".
+230221-22:15:48,560 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:16:02,983 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.419075s.
+run biascorrected_bet
+230221-22:16:02,989 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpkiaanxk4/skullstrip".
+230221-22:16:02,993 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:16:05,290 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.292751s.
+run flair normalization
+run mask normalization
+sub-52
+run reoriented_image_path
+230221-22:16:55,369 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpvl2gy4b7/flair".
+230221-22:16:55,373 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:16:56,353 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.976014s.
+run biascorrected_image
+230221-22:16:56,358 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpxvot3ec7/biascorr".
+230221-22:16:56,361 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:17:10,664 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.298543s.
+run biascorrected_bet
+230221-22:17:10,669 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpw09l99uz/skullstrip".
+230221-22:17:10,673 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:17:12,950 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.27299s.
+run flair normalization
+run mask normalization
+sub-53
+run reoriented_image_path
+230221-22:18:02,95 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp9qqgd7er/flair".
+230221-22:18:02,99 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:18:03,18 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.916028s.
+run biascorrected_image
+230221-22:18:03,23 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp9spxn95v/biascorr".
+230221-22:18:03,25 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:18:17,591 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.561784s.
+run biascorrected_bet
+230221-22:18:17,596 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpgjva07d3/skullstrip".
+230221-22:18:17,601 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:18:19,863 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.257876s.
+run flair normalization
+run mask normalization
+sub-54
+run reoriented_image_path
+230221-22:19:11,962 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp_w067swn/flair".
+230221-22:19:11,966 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:19:12,933 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.962435s.
+run biascorrected_image
+230221-22:19:12,942 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmprtdg9bws/biascorr".
+230221-22:19:12,945 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:19:27,516 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.566535s.
+run biascorrected_bet
+230221-22:19:27,521 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp6i3c4et3/skullstrip".
+230221-22:19:27,526 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:19:29,830 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.30024s.
+run flair normalization
+run mask normalization
+sub-55
+run reoriented_image_path
+230221-22:20:15,21 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpqe7cn8ly/flair".
+230221-22:20:15,25 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:20:16,53 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.026532s.
+run biascorrected_image
+230221-22:20:16,59 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpr7szr6_r/biascorr".
+230221-22:20:16,62 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:20:30,664 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.597998s.
+run biascorrected_bet
+230221-22:20:30,669 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpfsjyvyj4/skullstrip".
+230221-22:20:30,674 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:20:32,983 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.304834s.
+run flair normalization
+run mask normalization
+sub-56
+run reoriented_image_path
+230221-22:21:20,57 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmprvzj7zoc/flair".
+230221-22:21:20,69 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:21:20,989 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.916279s.
+run biascorrected_image
+230221-22:21:20,994 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpvo2fjpql/biascorr".
+230221-22:21:20,996 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:21:35,365 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.364748s.
+run biascorrected_bet
+230221-22:21:35,371 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpugpvyasp/skullstrip".
+230221-22:21:35,375 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:21:39,173 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 3.793704s.
+run flair normalization
+run mask normalization
+sub-57
+run reoriented_image_path
+230221-22:22:26,741 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpoltymoqf/flair".
+230221-22:22:26,744 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:22:27,702 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.953611s.
+run biascorrected_image
+230221-22:22:27,724 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp50vw3zix/biascorr".
+230221-22:22:27,726 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:22:42,256 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.525411s.
+run biascorrected_bet
+230221-22:22:42,263 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp_4ytdz87/skullstrip".
+230221-22:22:42,269 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:22:44,550 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.277311s.
+run flair normalization
+run mask normalization
+sub-58
+run reoriented_image_path
+230221-22:23:36,854 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpwaqcmgig/flair".
+230221-22:23:36,858 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:23:38,18 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.156077s.
+run biascorrected_image
+230221-22:23:38,24 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpzmeibo0u/biascorr".
+230221-22:23:38,26 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:23:52,955 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.925194s.
+run biascorrected_bet
+230221-22:23:52,960 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp3zh5gxsu/skullstrip".
+230221-22:23:52,964 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:23:55,260 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.291547s.
+run flair normalization
+run mask normalization
+sub-59
+run reoriented_image_path
+230221-22:24:53,23 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpljrgbtiv/flair".
+230221-22:24:53,26 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:24:54,262 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.23162s.
+run biascorrected_image
+230221-22:24:54,267 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp1v09akkt/biascorr".
+230221-22:24:54,268 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:25:09,294 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 15.021889s.
+run biascorrected_bet
+230221-22:25:09,300 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpctzuc4nq/skullstrip".
+230221-22:25:09,304 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:25:11,573 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.264637s.
+run flair normalization
+run mask normalization
+sub-60
+run reoriented_image_path
+230221-22:26:08,981 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp16r8nrfa/flair".
+230221-22:26:08,984 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:26:10,168 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.180128s.
+run biascorrected_image
+230221-22:26:10,175 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpdxnstw69/biascorr".
+230221-22:26:10,177 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:26:25,386 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 15.204947s.
+run biascorrected_bet
+230221-22:26:25,391 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp1orvwefe/skullstrip".
+230221-22:26:25,396 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:26:27,610 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.21003s.
+run flair normalization
+run mask normalization
+sub-61
+run reoriented_image_path
+230221-22:27:22,683 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp8stnz418/flair".
+230221-22:27:22,688 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:27:23,843 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.151411s.
+run biascorrected_image
+230221-22:27:23,850 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpuqc3prg3/biascorr".
+230221-22:27:23,853 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:27:38,918 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 15.059825s.
+run biascorrected_bet
+230221-22:27:38,923 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp1l69wa71/skullstrip".
+230221-22:27:38,927 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:27:41,185 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.253412s.
+run flair normalization
+run mask normalization
+sub-62
+run reoriented_image_path
+230221-22:28:36,357 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmppgkxr01t/flair".
+230221-22:28:36,360 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:28:37,616 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.251646s.
+run biascorrected_image
+230221-22:28:37,620 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp8ym81jer/biascorr".
+230221-22:28:37,622 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:28:52,488 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.862005s.
+run biascorrected_bet
+230221-22:28:52,494 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp_lxy72c2/skullstrip".
+230221-22:28:52,499 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:28:54,797 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.293554s.
+run flair normalization
+run mask normalization
+sub-63
+run reoriented_image_path
+230221-22:29:45,472 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpmpokmc5f/flair".
+230221-22:29:45,475 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:29:46,682 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.202325s.
+run biascorrected_image
+230221-22:29:46,687 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpuc9bo3f2/biascorr".
+230221-22:29:46,689 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:30:01,727 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 15.033557s.
+run biascorrected_bet
+230221-22:30:01,733 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpd02km4da/skullstrip".
+230221-22:30:01,737 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:30:04,25 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.283325s.
+run flair normalization
+run mask normalization
+sub-64
+run reoriented_image_path
+230221-22:30:52,525 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp7e5p4o7k/flair".
+230221-22:30:52,528 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:30:53,687 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.155827s.
+run biascorrected_image
+230221-22:30:53,692 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmprya0eb28/biascorr".
+230221-22:30:53,694 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:31:08,674 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.975918s.
+run biascorrected_bet
+230221-22:31:08,681 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpwlz4n21g/skullstrip".
+230221-22:31:08,688 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:31:10,950 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.257965s.
+run flair normalization
+run mask normalization
+sub-65
+run reoriented_image_path
+230221-22:32:01,593 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpr70u3z4h/flair".
+230221-22:32:01,598 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:32:02,779 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.175689s.
+run biascorrected_image
+230221-22:32:02,785 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmppc2rjz12/biascorr".
+230221-22:32:02,787 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:32:17,917 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 15.125263s.
+run biascorrected_bet
+230221-22:32:17,922 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpd37ydlic/skullstrip".
+230221-22:32:17,926 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:32:20,237 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.30672s.
+run flair normalization
+run mask normalization
+sub-66
+run reoriented_image_path
+230221-22:33:18,892 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpdai6b4e6/flair".
+230221-22:33:18,896 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:33:20,124 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.224207s.
+run biascorrected_image
+230221-22:33:20,130 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpo1r3wb70/biascorr".
+230221-22:33:20,132 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:33:35,235 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 15.098015s.
+run biascorrected_bet
+230221-22:33:35,240 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmphy3olxm9/skullstrip".
+230221-22:33:35,244 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:33:37,515 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.267412s.
+run flair normalization
+run mask normalization
+sub-67
+run reoriented_image_path
+230221-22:34:24,261 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmplqg5am09/flair".
+230221-22:34:24,265 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:34:25,504 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.234715s.
+run biascorrected_image
+230221-22:34:25,512 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmphmewacv7/biascorr".
+230221-22:34:25,514 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:34:40,579 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 15.060872s.
+run biascorrected_bet
+230221-22:34:40,585 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp2wn6glzo/skullstrip".
+230221-22:34:40,589 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:34:42,852 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.25823s.
+run flair normalization
+run mask normalization
+sub-68
+run reoriented_image_path
+230221-22:35:35,879 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp5iryyqon/flair".
+230221-22:35:35,883 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:35:36,832 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 0.945629s.
+run biascorrected_image
+230221-22:35:36,839 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp9q2xfx_k/biascorr".
+230221-22:35:36,842 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:35:51,327 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.480246s.
+run biascorrected_bet
+230221-22:35:51,335 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpomrwmn56/skullstrip".
+230221-22:35:51,340 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:35:53,745 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.399835s.
+run flair normalization
+run mask normalization
+sub-69
+run reoriented_image_path
+230221-22:36:40,6 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp5h0ncpqu/flair".
+230221-22:36:40,9 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:36:41,166 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.153117s.
+run biascorrected_image
+230221-22:36:41,171 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp72zhm3jm/biascorr".
+230221-22:36:41,174 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:36:56,313 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 15.135903s.
+run biascorrected_bet
+230221-22:36:56,318 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmput8e9z08/skullstrip".
+230221-22:36:56,322 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:36:58,613 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.28703s.
+run flair normalization
+run mask normalization
+sub-70
+run reoriented_image_path
+230221-22:37:50,82 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp1ebmp7zq/flair".
+230221-22:37:50,86 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:37:51,278 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.188173s.
+run biascorrected_image
+230221-22:37:51,284 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp80zm4eox/biascorr".
+230221-22:37:51,287 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:38:06,466 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 15.174064s.
+run biascorrected_bet
+230221-22:38:06,471 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpbw_ce467/skullstrip".
+230221-22:38:06,475 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:38:09,71 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.591492s.
+run flair normalization
+run mask normalization
+sub-71
+run reoriented_image_path
+230221-22:39:02,135 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmplkyrd1n_/flair".
+230221-22:39:02,140 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:39:03,279 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.134765s.
+run biascorrected_image
+230221-22:39:03,283 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmphm4mrnq9/biascorr".
+230221-22:39:03,285 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:39:18,542 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 15.252559s.
+run biascorrected_bet
+230221-22:39:18,547 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpf3wgqb1m/skullstrip".
+230221-22:39:18,552 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:39:20,820 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.2644320000000002s.
+run flair normalization
+run mask normalization
+sub-72
+run reoriented_image_path
+230221-22:40:10,871 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpdhimw4lm/flair".
+230221-22:40:10,874 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:40:11,976 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.097788s.
+run biascorrected_image
+230221-22:40:11,981 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpz9e7wzfd/biascorr".
+230221-22:40:11,983 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:40:26,940 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.951405s.
+run biascorrected_bet
+230221-22:40:26,946 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp5emspcyj/skullstrip".
+230221-22:40:26,950 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:40:30,739 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 3.784746s.
+run flair normalization
+run mask normalization
+sub-73
+run reoriented_image_path
+230221-22:41:22,912 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpoh3d7ik7/flair".
+230221-22:41:22,916 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:41:24,32 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.112801s.
+run biascorrected_image
+230221-22:41:24,40 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpsotf4nu2/biascorr".
+230221-22:41:24,44 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:41:38,994 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.945891s.
+run biascorrected_bet
+230221-22:41:39,0 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpc0qatzgh/skullstrip".
+230221-22:41:39,4 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:41:41,303 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.295212s.
+run flair normalization
+run mask normalization
+sub-74
+run reoriented_image_path
+230221-22:42:29,591 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp83896kih/flair".
+230221-22:42:29,595 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:42:30,724 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.125072s.
+run biascorrected_image
+230221-22:42:30,731 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpfkryn2bd/biascorr".
+230221-22:42:30,734 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:42:45,769 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 15.030103s.
+run biascorrected_bet
+230221-22:42:45,775 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmp_ez9nmbp/skullstrip".
+230221-22:42:45,780 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:42:48,41 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.257052s.
+run flair normalization
+run mask normalization
+sub-75
+run reoriented_image_path
+230221-22:43:38,932 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpopxambhl/flair".
+230221-22:43:38,937 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:43:40,57 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.116383s.
+run biascorrected_image
+230221-22:43:40,62 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp9lkwsy0n/biascorr".
+230221-22:43:40,64 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:43:55,96 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 15.028456s.
+run biascorrected_bet
+230221-22:43:55,101 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpah74jpdq/skullstrip".
+230221-22:43:55,105 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:43:57,437 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.326931s.
+run flair normalization
+run mask normalization
+sub-76
+run reoriented_image_path
+230221-22:44:44,809 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpfaxjzs4s/flair".
+230221-22:44:44,813 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:44:46,32 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.215125s.
+run biascorrected_image
+230221-22:44:46,37 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmp8d3rduu9/biascorr".
+230221-22:44:46,39 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:45:01,205 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 15.161221s.
+run biascorrected_bet
+230221-22:45:01,210 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmph3n8di2e/skullstrip".
+230221-22:45:01,214 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:45:03,424 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.205452s.
+run flair normalization
+run mask normalization
+sub-77
+run reoriented_image_path
+230221-22:45:59,864 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmpvip3oeto/flair".
+230221-22:45:59,873 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:46:01,150 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.272696s.
+run biascorrected_image
+230221-22:46:01,155 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpo1mals65/biascorr".
+230221-22:46:01,157 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:46:16,273 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 15.114456s.
+run biascorrected_bet
+230221-22:46:16,278 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpgyrvguts/skullstrip".
+230221-22:46:16,282 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:46:18,500 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.213887s.
+run flair normalization
+run mask normalization
+sub-78
+run reoriented_image_path
+230221-22:47:10,886 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmp94jgyhoi/flair".
+230221-22:47:10,890 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:47:12,39 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.145669s.
+run biascorrected_image
+230221-22:47:12,43 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpohoxb4hd/biascorr".
+230221-22:47:12,45 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:47:27,329 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 15.279967s.
+run biascorrected_bet
+230221-22:47:27,340 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmpa1xv6pgs/skullstrip".
+230221-22:47:27,345 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:47:29,597 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.247787s.
+run flair normalization
+run mask normalization
+sub-79
+run reoriented_image_path
+230221-22:48:23,842 nipype.workflow INFO:
+	 [Node] Setting-up "flair" in "/tmp/tmphdk_7y7e/flair".
+230221-22:48:23,845 nipype.workflow INFO:
+	 [Node] Executing "flair" <nipype.interfaces.fsl.utils.Reorient2Std>
+230221-22:48:24,894 nipype.workflow INFO:
+	 [Node] Finished "flair", elapsed time 1.045612s.
+run biascorrected_image
+230221-22:48:24,899 nipype.workflow INFO:
+	 [Node] Setting-up "biascorr" in "/tmp/tmpq4nhzft_/biascorr".
+230221-22:48:24,901 nipype.workflow INFO:
+	 [Node] Executing "biascorr" <nipype.interfaces.ants.segmentation.N4BiasFieldCorrection>
+230221-22:48:39,333 nipype.workflow INFO:
+	 [Node] Finished "biascorr", elapsed time 14.427859s.
+run biascorrected_bet
+230221-22:48:39,339 nipype.workflow INFO:
+	 [Node] Setting-up "skullstrip" in "/tmp/tmppxd4h46y/skullstrip".
+230221-22:48:39,343 nipype.workflow INFO:
+	 [Node] Executing "skullstrip" <nipype.interfaces.fsl.preprocess.BET>
+230221-22:48:41,617 nipype.workflow INFO:
+	 [Node] Finished "skullstrip", elapsed time 2.269829s.
+run flair normalization
+run mask normalization
