@@ -32,7 +32,7 @@ import numpy as np
 from modules.path_utils import get_all_dirs,  plot_tree, clear, copy_file,copy_dir
 from modules.path_utils import create_dir
 from modules.path_utils import create_result_dir,create_dir,get_dat_paths
-from modules.bids_library import get_main_paths
+#from modules.bids_library import get_main_paths
 from os.path import join, relpath
 from os import system
 
@@ -56,7 +56,7 @@ import cv2
 
 from modules.path_utils import get_all_dirs,  plot_tree, clear, copy_file,copy_dir
 from modules.path_utils import create_result_dir,create_dir,get_dat_paths
-from modules.bids_library import get_main_paths
+#from modules.bids_library import get_main_paths
 from modules.path_utils import  get_feature_paths
 from os.path import join, relpath
 import os
@@ -69,6 +69,8 @@ from nipype.interfaces.fsl import SliceTimer, MCFLIRT, Smooth, BET,ApplyXFM,Conv
 from nipype.interfaces.fsl import Reorient2Std
 from nipype.interfaces.ants import N4BiasFieldCorrection
 import shutil
+
+from modules.paths_library import create_master_file,save_df
 
 def copy_mask_to_workingdir(flair,standard_mask,prep_session_dir,standard_mask_image_name,biascorrected_bet_image_path):
     
@@ -966,3 +968,110 @@ def create_working_dict(bids_proscis_auto):
                 workin_dict[work_index][key]            = value
                 
     return workin_dict
+
+
+
+def create_training_master_file(train_subjects, data_set_df,bianca_master_file_directory):
+
+    master_file_text_lines  = []
+    trainstring       = ""
+    test_list         = []
+    test_dict         = {}
+    row_number        = 0
+    
+    flair_path = ""
+    mask_path = ""
+    flair_to_mni = ""
+    
+    masterfile_df = pd.DataFrame()
+    
+    for train_index,subject in enumerate(train_subjects):
+        
+        patient_df                =  data_set_df.loc[data_set_df['subject'] == subject,:]
+        
+        flair_path                =  patient_df['biascorrected_bet_image_path'].values[0]
+        
+        flair_to_mni              =  patient_df['MNI_xfm_path'].values[0]
+        mask_path_n               =  os.path.join(os.path.dirname(flair_path),"flair_WMHmask.nii")
+        mask_path_g               =  os.path.join(os.path.dirname(flair_path),"flair_WMHmask.nii.gz")
+        
+        if os.path.isfile(mask_path_n):
+            mask_path = mask_path_n
+        
+        elif os.path.isfile(mask_path_g):
+            mask_path = mask_path_g
+             
+        print(mask_path)
+        
+        
+        row_masterfile_df = pd.DataFrame(index=(train_index+1,))
+        
+        row_masterfile_df["input_flair"]  = flair_path
+        row_masterfile_df["flair_to_mni"] = flair_to_mni
+        row_masterfile_df["mask_path"]  = mask_path
+        
+        masterfile_df  = pd.concat([masterfile_df,row_masterfile_df])
+             
+        
+        if flair_path or flair_to_mni or mask_path:
+            row_number+=1
+            trainstring+=str(row_number)+","
+                                
+            master_file_train=    flair_path+" " +flair_to_mni+" "+mask_path
+            master_file_text_lines.append(master_file_train)    
+        
+        
+    trainstring = trainstring[:-1]
+            
+    master_file_path = join(bianca_master_file_directory,bianca_master_file_directory,"trainint_master_file.txt") 
+    master_file_df_path = join(bianca_master_file_directory,"trainint_master_file.xlsx") 
+    
+    save_df(masterfile_df,master_file_df_path)
+    
+    with open(master_file_path, 'w') as f:
+        f.write('\n'.join(master_file_text_lines))
+        
+        
+def create_test_subjects_for_bianca_table(test_subjects,data_set_df,bianca_master_file_directory):
+    
+    path_test= join(bianca_master_file_directory,"test_subjects.xlsx")
+    
+    test_subect_df = data_set_df[data_set_df['subject'].isin(test_subjects)]
+    save_df(test_subect_df,join(bianca_master_file_directory,"test_subjects.xlsx"))
+    
+    return path_test
+
+
+def create_train_subjects_for_bianca_table(train_subjects,data_set_df,bianca_master_file_directory):
+    
+    path_train= join(bianca_master_file_directory,"train_subjects.xlsx")
+    
+    train_subect_df = data_set_df[data_set_df['subject'].isin(train_subjects)]
+    save_df(train_subect_df,path_train)
+    
+    return path_train
+
+
+    
+    
+    
+class MasterCreator:
+    # Constructor method to initialize the object with some initial attributes
+    def __init__(self, bianca_master_files_directory, data_set_df):
+        self.bianca_master_files_directory = bianca_master_files_directory
+        self.data_set_df = data_set_df
+
+
+    # Method to accelerate the car's speed
+    def create_master_directory(self, train_subjects,test_subjects,master_file_name):
+        bianca_master_file_directory         =     os.path.join(self.bianca_master_files_directory,master_file_name)
+        create_dir(bianca_master_file_directory)
+        
+        create_training_master_file(train_subjects, self.data_set_df,bianca_master_file_directory)
+        create_test_subjects_for_bianca_table(test_subjects,self.data_set_df,bianca_master_file_directory)
+        create_train_subjects_for_bianca_table(train_subjects,self.data_set_df,bianca_master_file_directory)
+        
+        
+        
+        
+        

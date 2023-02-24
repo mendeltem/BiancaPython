@@ -11,6 +11,58 @@ import nibabel as nib
 import skimage.transform as skTrans
 import numpy as np
 import cv2
+from subprocess import run,call   
+import os
+import nibabel as nib
+
+
+# def copy_mask(mask_name,flair_image_path,prep_subject_dir):
+
+    
+#     if mask_name.endswith(".nii.gz"):
+#         standard_mask_name                    =  "WMHmask.nii.gz" 	#brain extracted
+#     elif mask_name.endswith(".nii"):
+#         standard_mask_name                    =  "WMHmask.nii" 	#brain extracted
+    
+    
+#     standard_mask_path   =  os.path.join(prep_subject_dir,standard_mask_name)
+    
+#     os.system(f"cp {mask_path} {standard_mask_path} ")
+    
+#     standard_mask_img_nib          = nib.load(mask_path)
+#     standard_mask_img              = standard_mask_img_nib.get_fdata()
+#     mask_shape                     = standard_mask_img.shape
+    
+#     flair_image_img_nib            = nib.load(flair_image_path)
+#     flair_image_img_ref            = flair_image_img_nib.get_fdata()
+#     ref_shape                      = flair_image_img_ref.shape
+    
+#     if mask_shape == ref_shape:
+#         print("same")
+#         standard_mask_img_resized      = standard_mask_img
+#     else:
+#         print("not same")
+#         standard_mask_img_resized      = skTrans.resize(standard_mask_img, ref_shape, order=1, preserve_range=True) 
+        
+#     mask_img_resized = nib.Nifti1Image(standard_mask_img_resized, standard_mask_img_nib.affine)
+#     nib.save(mask_img_resized, standard_mask_path)
+    
+    
+#     return standard_mask_path
+
+
+def get_volume(path):
+    
+    output_all_matter = run(["fslstats",
+                    path,
+                    "-V"], 
+                    capture_output=True)
+            
+    result_str = str(output_all_matter.stdout)
+    all_matter_result = result_str.split(" ")
+
+    return float(all_matter_result[1])
+
 
 def normalize_volume(image):
     """normalize 3D Volume image"""

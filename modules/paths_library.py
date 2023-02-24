@@ -15,10 +15,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
-
 from nipype.interfaces.ants import N4BiasFieldCorrection
-
 from nipype import Node, Workflow
 from nipype.interfaces.fsl import Reorient2Std
 from nipype.interfaces.fsl import SliceTimer, MCFLIRT, Smooth, BET,ApplyXFM,ConvertXFM
@@ -33,8 +30,7 @@ from os import listdir
 import skimage.transform as skTrans
 import nibabel as nib
 
-from modules.path_utils import create_result_dir,create_dir,get_main_paths,get_all_dirs
-
+from modules.path_utils import get_all_dirs
 
 
 def create_master_file(train_subjects,
@@ -96,59 +92,86 @@ def create_master_file(train_subjects,
 
 def create_challange_table(dataset_path,index_for_patient):
     
+      
+    hlm_list =     get_all_dirs(dataset_path)
     dataset_name = os.path.basename(dataset_path)
-
+    
     single_dataset_df =  pd.DataFrame()
-    list_subjects   =     get_all_dirs(dataset_path)
-    for f,files in enumerate(list_subjects):
         
-        directory_id = os.path.basename(files)
+    for hlm_i,hlm_path in enumerate(hlm_list):
+        
+        file_base_names = {}
+
+        
+        base_name = os.path.basename(hlm_path)
+        
+        print(base_name)
+        
+        list_files = [ os.path.join(hlm_path,directory)\
+                     for directory in os.listdir(hlm_path)]
+    
+
+        list_subjects   =     get_all_dirs(hlm_path)
         
         
-        patient_df = pd.DataFrame(index=(int(index_for_patient),))
         
-        index_for_patient +=1
-        
-        list_files = [os.path.join(files,directory)\
-                     for directory in os.listdir(files) if '.' in os.path.basename(directory).lower()]
+        for f,files in enumerate(list_subjects):
             
-        
-        for file_path in list_files: 
-            if 'kv' in basename(file_path).lower():
-                
-                mask_image = file_path
-
-            elif '.nii' in basename(file_path).lower():
-                mask_image = file_path
+            directory_id = os.path.basename(files)
             
-
-        list_dirs  = get_all_dirs(files)
-        
-        for image_dir in list_dirs:
-
-            if 'pre' in image_dir:
+            
+            patient_df = pd.DataFrame(index=(int(index_for_patient),))
+            
+            index_for_patient +=1
+            
+            list_files = [os.path.join(files,directory)\
+                         for directory in os.listdir(files) if '.' in os.path.basename(directory).lower()]
                 
-                flair_image = [join(image_dir,directory)\
-                             for directory in listdir(image_dir) if 'flair.' in basename(directory).lower()][0]
+            
+            for file_path in list_files: 
+                if 'kv' in basename(file_path).lower():
                     
-
-                t1_image = [join(image_dir,directory)\
-                             for directory in listdir(image_dir) if 't1.nii.gz' == basename(directory).lower() or\
-                                 't1.nii' == basename(directory).lower() ][0]
+                    mask_image = file_path
+    
+                elif '.nii' in basename(file_path).lower():
+                    mask_image = file_path
+                
+    
+            list_dirs  = get_all_dirs(files)
+            
+            for image_dir in list_dirs:
+    
+                if 'pre' in image_dir:
                     
-        patient_df["patient_id"] = directory_id
-        patient_df["mask_path"]  = mask_image
-        patient_df["flair_image_path"]  = flair_image
-        patient_df["t1_image_path"]  = t1_image
-        patient_df["dataset_name"] = dataset_name
-        
-        
-        single_dataset_df=pd.concat([single_dataset_df,patient_df])
+                    flair_image = [join(image_dir,directory)\
+                                 for directory in listdir(image_dir) if 'flair.' in basename(directory).lower()][0]
+                        
+    
+                    t1_image = [join(image_dir,directory)\
+                                 for directory in listdir(image_dir) if 't1.nii.gz' == basename(directory).lower() or\
+                                     't1.nii' == basename(directory).lower() ][0]
+                        
+            patient_df["patient_id"] = directory_id
+            patient_df["mask_path"]  = mask_image
+            patient_df["flair_image_path"]  = flair_image
+            patient_df["t1_image_path"]  = t1_image
+            patient_df["dataset_name"] = dataset_name
+            patient_df["lesion_concentration"] = base_name
+            
+            
+           
+            single_dataset_df=pd.concat([single_dataset_df,patient_df])
         
     return single_dataset_df,index_for_patient
 
 
-
+def save_df(data_set_df,data_pp_path):
+    
+    try:
+        data_set_df.to_excel(data_pp_path)
+    except:
+        print("resource busy:")
+    
 
 def create_belove_table(dataset_path,index_for_patient):
 
@@ -211,7 +234,9 @@ def create_belove_table(dataset_path,index_for_patient):
             index_for_patient +=1
         
             patient_df["patient_id"] = f_value['image'][:-8]
-            patient_df["dataset_name"] = dataset_name+"_"+base_name
+            patient_df["dataset_name"] = dataset_name
+            
+            patient_df["lesion_concentration"] = base_name
             patient_df["flair_image_path"] = join(dname,f_value['image'])
             patient_df["t1_image_path"] = ""
             patient_df["mask_path"] = join(dname,f_value['mask'])
@@ -226,7 +251,7 @@ def create_tabel_for_all_subjects(all_patient_dataset_df,challange_df,subject_in
     
     if challange_df.empty:
         return all_patient_dataset_df,subject_index
-
+    
 
     subject_list = list(challange_df.loc[:,"patient_id"])
 
@@ -254,47 +279,47 @@ def create_tabel_for_all_subjects(all_patient_dataset_df,challange_df,subject_in
 
 
 
-def create_null_images(biascorrected_bet_image_path,
-                       mask_path, 
-                       null_subject_path,max_number =10 ):
+# def create_null_images(biascorrected_bet_image_path,
+#                        mask_path, 
+#                        null_subject_path,max_number =10 ):
 
-    flair_nib                                = nib.load(biascorrected_bet_image_path)
-    flair_3d_im                              = flair_nib.get_fdata()
+#     flair_nib                                = nib.load(biascorrected_bet_image_path)
+#     flair_3d_im                              = flair_nib.get_fdata()
     
  
-    mask_nib                                 = nib.load(mask_path)
-    mask_3d_im                               = mask_nib.get_fdata()
+#     mask_nib                                 = nib.load(mask_path)
+#     mask_3d_im                               = mask_nib.get_fdata()
     
 
-    mask_sum_list  = [ np.sum(mask_3d_im[:,:,i]) for i in range( mask_3d_im.shape[-1])]
-    top_index_list = [position for rank,value,position in  rank_list(mask_sum_list,max_number)]
+#     mask_sum_list  = [ np.sum(mask_3d_im[:,:,i]) for i in range( mask_3d_im.shape[-1])]
+#     top_index_list = [position for rank,value,position in  rank_list(mask_sum_list,max_number)]
     
-    random_mask_index                               = np.random.choice(top_index_list)
+#     random_mask_index                               = np.random.choice(top_index_list)
     
 
-    for ti,top_index in enumerate(top_index_list):
+#     for ti,top_index in enumerate(top_index_list):
         
-        null_maske_3d = np.zeros(mask_3d_im.shape)
-        random_mask                                        = mask_3d_im[:,:,top_index]
-        inverted_random_mask                               = 1 - random_mask
+#         null_maske_3d = np.zeros(mask_3d_im.shape)
+#         random_mask                                        = mask_3d_im[:,:,top_index]
+#         inverted_random_mask                               = 1 - random_mask
         
-        null_maske_3d[:,:,random_mask_index]               = random_mask
+#         null_maske_3d[:,:,random_mask_index]               = random_mask
         
-        null_flair_3d_im                                = normalize_volume(flair_3d_im.copy())
+#         null_flair_3d_im                                = normalize_volume(flair_3d_im.copy())
         
-        null_slice  = null_flair_3d_im[:,:,random_mask_index] *  inverted_random_mask
+#         null_slice  = null_flair_3d_im[:,:,random_mask_index] *  inverted_random_mask
         
-        null_flair_3d_im[:,:,random_mask_index]         = null_slice
+#         null_flair_3d_im[:,:,random_mask_index]         = null_slice
         
-        ni_img          = nib.Nifti1Image(null_flair_3d_im ,
-                                            flair_nib.affine)
+#         ni_img          = nib.Nifti1Image(null_flair_3d_im ,
+#                                             flair_nib.affine)
         
-        nib.save(ni_img, f"{null_subject_path}/flair_{ti}_null.nii.gz")
+#         nib.save(ni_img, f"{null_subject_path}/flair_{ti}_null.nii.gz")
         
-        ni_img          = nib.Nifti1Image(null_maske_3d ,
-                                            flair_nib.affine)
+#         ni_img          = nib.Nifti1Image(null_maske_3d ,
+#                                             flair_nib.affine)
         
-        nib.save(ni_img, f"{null_subject_path}/mask_{ti}_null.nii.gz")
+#         nib.save(ni_img, f"{null_subject_path}/mask_{ti}_null.nii.gz")
         
     
 def rank_list(lst, n):

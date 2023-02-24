@@ -28,7 +28,7 @@ standard_space_flair                  =     config_dict['PATHS']["standard_space
 datasets_list                         =     get_all_dirs(datasets_original_path)
 
 
-data_location_table_path              =   os.path.join(datasets_prepared_path,"data_location.xlsx")
+data_location_table_path              =   os.path.join(datasets_prepared_path,"data_original_location.xlsx")
 
 
 index_for_patient = 1
@@ -43,6 +43,7 @@ for d_i, dataset_path in enumerate(datasets_list):
     base_name = os.path.basename(dataset_path)
      
     if "challenge" in  base_name.lower():
+        
 
         challange_df,index_for_patient = create_challange_table(dataset_path,index_for_patient)
         print(challange_df.columns)
@@ -51,6 +52,7 @@ for d_i, dataset_path in enumerate(datasets_list):
         
   
     if "belove" in  base_name.lower():
+        
 
         belove_df,index_for_patient = create_belove_table(dataset_path,index_for_patient)
         
