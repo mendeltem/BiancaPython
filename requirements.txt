@@ -1,0 +1,9 @@
+numpy
+matplotlib
+nibabel 
+numpy 
+opencv-python
+seaborn
+nipype
+attrdict
+python-dotenv
