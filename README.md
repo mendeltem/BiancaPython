@@ -8,15 +8,15 @@ feature engineering, statistical analysis, and visualization.
 
 ```bash
 
-https://github.com/mendeltem/Bianca_python.git
+https://github.com/mendeltem/BiancaPython.git
 
-cd Bianca_python
+cd BiancaPython
 pip install -r requirements
 ```
 Set up to .bashrc
 
 '''
-BIANCAPATH=path/to/Bianca_python
+BIANCAPATH=path/to/BiancaPython
 PATH=${BIANCAPATH}:${PATH}
 '''
 
@@ -25,13 +25,13 @@ Usage
 Here's an example of how you can use Bianca_python for brain image analysis:
 
 
-# Bianca_python
+# BiancaPython
 
-Bianca_python is a software tool for brain image analysis. It provides functionality for processing brain images and performing various analyses.
+BiancaPython is a software tool for brain image analysis. It provides functionality for processing brain images and performing various analyses.
 
 ## Example Usage
 
-You can use Bianca_python to perform brain image analysis with a command-line script. Here's an example command:
+You can use BiancaPython to perform brain image analysis with a command-line script. Here's an example command:
 
 ```bash
 run_bianca_sh.sh -image=tests/data_test/flair_image_bet.nii.gz -mni=tests/data_test/flair_to_mni.mat -masterfile=tests/data_test/Masterfiles/small_masterfile.txt -output="/home/temuuleu/bianca_output.nii"
@@ -65,12 +65,12 @@ It's recommended to refer to the BIANCA User Guide or consult with the developer
 For more details on the functionalities offered by Bianca_python, you can refer to the BIANCA User Guide or the examples provided in the repository.
 Contributing
 
-If you would like to contribute to Bianca_python, please submit a pull request with your changes. We welcome contributions from the community and appreciate your help in making the library better.
+If you would like to contribute to BiancaPython, please submit a pull request with your changes. We welcome contributions from the community and appreciate your help in making the library better.
 License
 
-Bianca_python is released under the MIT License. See LICENSE for more information.
+BiancaPython is released under the * License. See LICENSE for more information.
 Contact
 
 If you have any questions or feedback, you can reach us at uchralt.temuulen@charite.de
 
-Thank you for using Bianca_python! We hope you find it useful for your brain image processing and analysis tasks.
+Thank you for using BiancaPython! We hope you find it useful for your brain image processing and analysis tasks.
