@@ -1,4 +1,4 @@
-# Bianca_python
+# Bianca Python
 
 Bianca is a tool developed by the FMRIB Image 
 Analysis Group at the University of Oxford for performing brain image analysis tasks.
