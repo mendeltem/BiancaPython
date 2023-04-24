@@ -12,9 +12,10 @@ Installation
 
 You can install Bianca_python using pip:
 
-bash
-
+```bash
 pip install -r requirements
+```
+
 
 Bianca_python
 
@@ -45,10 +46,15 @@ You can use Bianca_python to perform brain image analysis with a command-line sc
 ```bash
 ./run_bianca_sh.sh -image=tests/data_test/flair_image_bet.nii.gz -mni=tests/data_test/flair_to_mni.mat -masterfile=tests/data_test/Masterfiles/small_masterfile.txt -output="/home/temuuleu/bianca_output.nii"
 
-This command runs the BIANCA analysis on the specified input brain image file in NIfTI format (-image), using the provided transformation matrix file (-mni) to map the image to MNI space. The masterfile (-masterfile) contains the configuration and parameters for the analysis. The results of the analysis will be saved as a NIfTI image with the file path and name specified in the -output argument.
+```
 
-Please note that the actual usage of Bianca_python may require additional parameters and settings depending on the specific analysis being performed. It's recommended to refer to the BIANCA User Guide or consult with the developers for more detailed instructions on how to use the tool effectively.
+This command runs the BIANCA analysis on the specified input brain image file in NIfTI format (-image),
+ using the provided transformation matrix file (-mni) to map the image to MNI space.
+The masterfile (-masterfile) contains the configuration and parameters for the analysis.
+The results of the analysis will be saved as a NIfTI image with the file path and name specified in the -output argument.
 
+Please note that the actual usage of Bianca_python may require additional parameters and settings depending on the specific analysis being performed. 
+It's recommended to refer to the BIANCA User Guide or consult with the developers for more detailed instructions on how to use the tool effectively.
 
 
 For more details on the functionalities offered by Bianca_python, you can refer to the BIANCA User Guide or the examples provided in the repository.
