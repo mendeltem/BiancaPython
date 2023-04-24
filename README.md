@@ -28,41 +28,28 @@ Features
 
 Installation
 
-You can install Bianca_python using pip:
-
-bash
-
-pip install bianca-python
 
 Usage
 
 Here's an example of how you can use Bianca_python for brain image analysis:
 
-python
 
-import bianca_python as bp
+# Bianca_python
 
-# Load brain image data
-data = bp.load_data('data.nii.gz')
+Bianca_python is a software tool for brain image analysis. It provides functionality for processing brain images and performing various analyses.
 
-# Perform data cleaning
-data = bp.handle_missing_values(data)
-data = bp.handle_outliers(data)
-data = bp.handle_inconsistent_data(data)
+## Example Usage
 
-# Perform feature engineering
-data = bp.feature_extraction(data)
-data = bp.feature_transformation(data)
+You can use Bianca_python to perform brain image analysis with a command-line script. Here's an example command:
 
-# Perform statistical analysis
-bp.descriptive_statistics(data)
-bp.hypothesis_testing(data)
-bp.regression_analysis(data)
+```bash
+./run_bianca_sh.sh -image=tests/data_test/flair_image_bet.nii.gz -mni=tests/data_test/flair_to_mni.mat -masterfile=tests/data_test/Masterfiles/small_masterfile.txt -output="/home/temuuleu/bianca_output.nii"
 
-# Create visualizations
-bp.plot_bar_chart(data)
-bp.plot_line_chart(data)
-bp.plot_scatter_plot(data)
+This command runs the BIANCA analysis on the specified input brain image file in NIfTI format (-image), using the provided transformation matrix file (-mni) to map the image to MNI space. The masterfile (-masterfile) contains the configuration and parameters for the analysis. The results of the analysis will be saved as a NIfTI image with the file path and name specified in the -output argument.
+
+Please note that the actual usage of Bianca_python may require additional parameters and settings depending on the specific analysis being performed. It's recommended to refer to the BIANCA User Guide or consult with the developers for more detailed instructions on how to use the tool effectively.
+
+
 
 For more details on the functionalities offered by Bianca_python, you can refer to the BIANCA User Guide or the examples provided in the repository.
 Contributing
