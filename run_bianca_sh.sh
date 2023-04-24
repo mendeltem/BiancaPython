@@ -99,10 +99,6 @@ then
     echo Installing missing packages...
     pip install -r requirements.txt
 fi
-#python -m bianca_shell  $@ -image $1 
-
-
-#python -m bianca_shell -image $IMAGE
 
 python -m bianca_shell $@  -image="$IMAGE" -mni="$MNI" -masterfile="$MASTERFILE" -output="$OUTPUT"
 
