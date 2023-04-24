@@ -2,29 +2,71 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog
 from tkinter import messagebox
-
 from bianca_gui.config.config import Config
+import os
+import pandas as pd
+
+# Global variable to store the selected file path
+selected_file_path = None
+
+    
+"""
+
+first_column = [
+    [tk.Label(text="Train directories")],
+    [tk.Listbox(window, selectmode=tk.MULTIPLE, height=10)],
+    [tk.Button(text="Select train set", command=lambda: show_selected_subject())],
+    [tk.Label(text="Train Subjects")],
+    [tk.Listbox(window, selectmode=tk.MULTIPLE, height=30)],
+    [tk.Button(text="Show selected subject", command=lambda: show_selected_subject())]
+]
+
+
+"""
 
 
 # Function to browse for a folder
-def browse_folder_file():
+def browse_folder_file(list_master_files):
+    global train_folder
     cfg = Config()
     
     # Set the initial directory
     initial_directory = cfg.master_file_path
-    folder_path = filedialog.askopenfile(initialdir=initial_directory)
+    train_folder = filedialog.askdirectory(initialdir=initial_directory)
     
     #folder_path = filedialog.askdirectory()
-    print("Selected folder:", folder_path)
+    print("Selected folder:", train_folder)
 
+    train_dir_list = [os.path.join(train_folder, f) for f in os.listdir(train_folder)  if ".txt" in f.lower()]  
+    train_dir_names = [os.path.basename( f) for f in train_dir_list ] 
 
+    print("train_dir_names :", train_dir_names)
+    
+    train_dir_dict = {}
+
+    for index, (p,n) in enumerate(zip(train_dir_list,train_dir_names)):
+        train_dir_dict[n] ={ }
+        train_dir_dict[n]["index"]= index
+        train_dir_dict[n]["path"] = p
+        train_dir_dict[n]["name"] =n
+
+    #print("train_dir_dict :", train_dir_dict)
+    
+    # Clear existing items in the Listbox
+    list_master_files.delete(0, tk.END)
+    
+    # Add file names to the Listbox
+    for name in train_dir_names:
+        list_master_files.insert(tk.END, name)
+        
+        
+
+        
+    
 # Function to create a new window
 def check_train_set():
-
-    #new_window = tk.Toplevel(root)
-    #debug
     
-    #print(cfg.master_file_path)
+    #global list_subject_files
     
     new_window = tk.Tk()
     new_window.title("Train Data")
@@ -32,22 +74,86 @@ def check_train_set():
     
     # Create a label in the new window
     label = tk.Label(new_window, text="Input Image:")
-    label.pack()
-    
-    Entry  = tk.Entry(new_window, width=25)
-    Entry.pack()
-    
-    INPUT_IMAGE = tk.Button(text="Input Image", command=lambda: browse_folder_file())
-    INPUT_IMAGE.pack()
+     #Entry  = tk.Entry(new_window, width=25) #Entry.grid(row=0, column=0, padx=1, pady=1) 
+     
+    list_master_files =  tk.Listbox(new_window, selectmode=tk.MULTIPLE, height=5)
+    list_subject_files = tk.Listbox(new_window, selectmode=tk.MULTIPLE, height=15)
 
+    selected_master_folder_button = tk.Button(text="Select Master File Folder", command=lambda: browse_folder_file(list_master_files)) 
+
+    # Function to handle file selection
+    def select_files(list_subject_files):
+        # Get the selected indices
+        selected_indices = list_master_files.curselection()
+    
+        # Get the file names corresponding to the selected indices
+        for index in selected_indices:
+            file_name = list_master_files.get(index)
+            selected_file = os.path.join(train_folder,file_name)
+            #selected_file =file_name
+
+        if selected_file:
+            # Print selected file names (for debug)
+            with open(selected_file) as f:
+                lines = f.readlines()
+                
+            data = [line.strip().split() for line in lines]
+            train_master_df = pd.DataFrame(data, columns=['flair', 'mni_matrix', 'mask'])
+            train_master_df['subj'] = train_master_df['flair'].apply(lambda x: x.split('/')[-2])
+ 
+            train_dict_data = {}
+            for i, row in train_master_df.iterrows():
+                subj = row['subj']
+                train_dict_data[subj] = {'flair': row['flair'], 'mask': row['mask']}
+                if i >=10: break
+              
+            subject_list = list(train_dict_data.keys())
+            subject_list.sort()
+            
+            # Add file names to the Listbox
+            for subject in subject_list:
+                list_subject_files.insert(tk.END, subject)
+            
+        
     # Function to close the new window
     def close_new_window():
         new_window.destroy()
          
+    
+    # Create a button to trigger file selection
+    select_masterfile_button = tk.Button(new_window, text="Selected Master File", command= lambda: select_files(list_subject_files))
+    # Create a button to trigger file selection
+    
+    
+    # Function to handle file selection
+    def select_subject():
+        # Get the selected indices
+        selected_indices = list_subject_files.curselection()
+        
+        # Get the file names corresponding to the selected indices
+        for index in selected_indices:
+            file_name = list_subject_files.get(index)
+        
+        print(f"selected indices: {file_name}")
+        
+    
+    select_subject_button = tk.Button(new_window, text="Selected Subject File", command= lambda: select_subject())
+     
     # Create an exit button for the new window
     exit_button = tk.Button(new_window, text="Exit", command=close_new_window)
-    exit_button.pack()
+    
+    # Create Listbox 2
+    label.grid(row=0, column=0, padx=0, pady=0) 
+    selected_master_folder_button.grid(row=0, column=0, padx=0, pady=10) 
+    select_masterfile_button.grid(row=0, column=1, padx=0, pady=0) 
+    select_subject_button.grid(row=2, column=1, padx=0, pady=0) 
+    
 
+    list_master_files.grid(row=1, column=0, padx=0, pady=0) 
+    list_subject_files.grid(row=1, column=1, padx=0, pady=0)  
+
+    exit_button.grid(row=2, column=3, padx=1, pady=1) 
+    
     #debug
     new_window.mainloop()
 
@@ -264,7 +370,7 @@ else:
     item.add_cascade(label=item[0], menu=item)
     
     window.config(menu=menu_bar)
-    window.mainloop()
+    window.mainloop()gg
     
         
         
