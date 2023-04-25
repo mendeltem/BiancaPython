@@ -8,10 +8,10 @@ feature engineering, statistical analysis, and visualization.
 
 ```bash
 
-https://github.com/mendeltem/BiancaPython.git
+git clone https://github.com/mendeltem/BiancaPython.git
 
 cd BiancaPython
-pip install -r requirements
+pip install -r requirements.txt
 ```
 Set up to .bashrc
 
