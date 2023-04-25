@@ -3,6 +3,8 @@ from tkinter import ttk
 from tkinter import filedialog
 from tkinter import messagebox
 from bianca_gui.config.config import Config
+from bianca_shell.bianca_shell import run_bianca
+
 import os
 import pandas as pd
 
@@ -11,7 +13,6 @@ selected_file_path = None
 
     
 """
-
 first_column = [
     [tk.Label(text="Train directories")],
     [tk.Listbox(window, selectmode=tk.MULTIPLE, height=10)],
@@ -20,10 +21,7 @@ first_column = [
     [tk.Listbox(window, selectmode=tk.MULTIPLE, height=30)],
     [tk.Button(text="Show selected subject", command=lambda: show_selected_subject())]
 ]
-
-
 """
-
 
 # Function to browse for a folder
 def browse_folder_file(list_master_files):
@@ -60,14 +58,49 @@ def browse_folder_file(list_master_files):
         list_master_files.insert(tk.END, name)
         
         
-
         
+# Function to browse for a folder
+def browse_image_file(list_master_files):
+    global train_folder
+    cfg = Config()
     
+    # Set the initial directory
+    initial_directory = cfg.master_file_path
+
+    
+    train_folder = filedialog.askdirectory(initialdir=initial_directory)
+    
+    #folder_path = filedialog.askdirectory()
+    print("Selected folder:", train_folder)
+
+    train_dir_list = [os.path.join(train_folder, f) for f in os.listdir(train_folder)  if ".txt" in f.lower()]  
+    train_dir_names = [os.path.basename( f) for f in train_dir_list ] 
+
+    print("train_dir_names :", train_dir_names)
+    
+    train_dir_dict = {}
+
+    for index, (p,n) in enumerate(zip(train_dir_list,train_dir_names)):
+        train_dir_dict[n] ={ }
+        train_dir_dict[n]["index"]= index
+        train_dir_dict[n]["path"] = p
+        train_dir_dict[n]["name"] =n
+
+    #print("train_dir_dict :", train_dir_dict)
+    
+    # Clear existing items in the Listbox
+    list_master_files.delete(0, tk.END)
+    
+    # Add file names to the Listbox
+    for name in train_dir_names:
+        list_master_files.insert(tk.END, name)
+        
+        
+
 # Function to create a new window
 def check_train_set():
     
     #global list_subject_files
-    
     new_window = tk.Tk()
     new_window.title("Train Data")
     new_window.geometry("600x600")
@@ -78,6 +111,9 @@ def check_train_set():
      
     list_master_files =  tk.Listbox(new_window, selectmode=tk.MULTIPLE, height=5)
     list_subject_files = tk.Listbox(new_window, selectmode=tk.MULTIPLE, height=15)
+    
+    
+    #standard directory chosen before asted
 
     selected_master_folder_button = tk.Button(text="Select Master File Folder", command=lambda: browse_folder_file(list_master_files)) 
 
@@ -124,20 +160,8 @@ def check_train_set():
     select_masterfile_button = tk.Button(new_window, text="Selected Master File", command= lambda: select_files(list_subject_files))
     # Create a button to trigger file selection
     
-    
-    # Function to handle file selection
-    def select_subject():
-        # Get the selected indices
-        selected_indices = list_subject_files.curselection()
         
-        # Get the file names corresponding to the selected indices
-        for index in selected_indices:
-            file_name = list_subject_files.get(index)
-        
-        print(f"selected indices: {file_name}")
-        
-    
-    select_subject_button = tk.Button(new_window, text="Selected Subject File", command= lambda: select_subject())
+    select_subject_button = tk.Button(new_window, text="Selected Subject File", command= lambda: select_files(list_subject_files))
      
     # Create an exit button for the new window
     exit_button = tk.Button(new_window, text="Exit", command=close_new_window)
@@ -148,16 +172,104 @@ def check_train_set():
     select_masterfile_button.grid(row=0, column=1, padx=0, pady=0) 
     select_subject_button.grid(row=2, column=1, padx=0, pady=0) 
     
-
     list_master_files.grid(row=1, column=0, padx=0, pady=0) 
     list_subject_files.grid(row=1, column=1, padx=0, pady=0)  
-
     exit_button.grid(row=2, column=3, padx=1, pady=1) 
     
     #debug
     new_window.mainloop()
+    
+    
+    
+# Function to create a new window
+def run_bianca_gui():
+    
+    #global list_subject_files
+    
+    new_window = tk.Tk()
+    new_window.title("Run Bianca")
+    new_window.geometry("600x600")
+    
+    # Create a label in the new window
+    label          = tk.Label(new_window, text="Input Image:")
+    Input_Image    = tk.Entry(new_window,text="Input Image:", 
+                              width=25) #Entry.grid(row=0, column=0, padx=1, pady=1) 
+     
 
+    list_master_files =  tk.Listbox(new_window, selectmode=tk.MULTIPLE, height=5)
+    selected_master_folder_button = tk.Button(text="Select Master File Folder", command=lambda: browse_folder_file(list_master_files)) 
 
+    # Function to handle file selection
+    def select_files():
+        # Get the selected indices
+        selected_indices = list_master_files.curselection()
+    
+        # Get the file names corresponding to the selected indices
+        for index in selected_indices:
+            file_name = list_master_files.get(index)
+            selected_file = os.path.join(train_folder,file_name)
+            #selected_file =file_name
+
+        if selected_file:
+            # Print selected file names (for debug)
+            with open(selected_file) as f:
+                lines = f.readlines()
+                
+            data = [line.strip().split() for line in lines]
+            train_master_df = pd.DataFrame(data, columns=['flair', 'mni_matrix', 'mask'])
+            train_master_df['subj'] = train_master_df['flair'].apply(lambda x: x.split('/')[-2])
+ 
+            train_dict_data = {}
+            for i, row in train_master_df.iterrows():
+                subj = row['subj']
+                train_dict_data[subj] = {'flair': row['flair'], 'mask': row['mask']}
+                if i >=10: break
+              
+            subject_list = list(train_dict_data.keys())
+            subject_list.sort()
+            
+        
+    # Function to close the new window
+    def close_new_window():
+        new_window.destroy()
+         
+    
+    # Create a button to trigger file selection
+    select_masterfile_button = tk.Button(new_window, text="Selected Master File", command= lambda: select_files())
+    # Create a button to trigger file selection
+    
+    
+    # Function to handle file selection
+    def select_image(Input_Image):
+        # Get the selected indices
+        image_file = filedialog.askopenfile()
+        print(f"image_file {image_file}")
+        
+        # Clear existing items in the Listbox
+        Input_Image.delete(0, tk.END)
+        Input_Image.insert(tk.END, image_file)
+
+    
+    select_image_button = tk.Button(new_window, text="Select Input Image", command= lambda: select_image(Input_Image))
+     
+    # Create an exit button for the new window
+    exit_button = tk.Button(new_window, text="Exit", command=close_new_window)
+    
+    # Create Listbox 2
+    label.grid(row=0, column=0, padx=0, pady=0) 
+    selected_master_folder_button.grid(row=0, column=0, padx=0, pady=10) 
+    select_masterfile_button.grid(row=0, column=1, padx=0, pady=0) 
+    select_image_button.grid(row=2, column=1, padx=0, pady=0) 
+    list_master_files.grid(row=1, column=0, padx=0, pady=0) 
+    
+    # Pack the text box widget to the window
+    Input_Image.grid(row=1, column=1, padx=0, pady=0)  
+    #list_subject_files.grid(row=1, column=1, padx=0, pady=0)  
+    exit_button.grid(row=2, column=3, padx=1, pady=1) 
+    
+    #debug
+    new_window.mainloop()
+    
 
 # Function to exit the main window
 def exit_main_window():
@@ -166,7 +278,6 @@ def exit_main_window():
         root.destroy()
         
         
-    
 # Function to create the main window
 def create_bianca_gui():
     global root
@@ -197,9 +308,9 @@ def create_bianca_gui():
     root.mainloop()
     
     
-
+    
 # Call the create_bianca_gui() function to start the GUI
-check_train_set()
+run_bianca_gui()
 
 
 

@@ -8,3 +8,4 @@ nipype
 attrdict
 python-dotenv
 coverage
+colorama
