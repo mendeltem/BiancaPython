@@ -8,7 +8,7 @@ feature engineering, statistical analysis, and visualization.
 https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BIANCA
 
 
-![Image 15](images/image_3/img_25.jpg)
+![Image 15](images/image_1.jpg)
 
 
 
@@ -37,6 +37,8 @@ BiancaPython is a software tool for brain image analysis. It provides functional
 
 ## Example Usage
 
+## Bianca from shell
+
 You can use BiancaPython to perform brain image analysis with a command-line script. Here's an example command:
 
 ```bash
@@ -61,6 +63,13 @@ The following options can be used with the BIANCA shell script:
 - `-output=<value>`: Path to the output directory for BIANCA results. Required.
 - `-h`, `-help`: Show this help message and exit.
 
+
+## Bianca from from GUI
+
+```bash
+run_bianca_gui
+
+```
 
 
 
