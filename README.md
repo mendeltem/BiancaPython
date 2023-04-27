@@ -5,6 +5,12 @@ Analysis Group at the University of Oxford for performing brain image analysis t
 It provides a range of functionalities for processing and analyzing brain image data, including data cleaning,
 feature engineering, statistical analysis, and visualization.
 
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BIANCA
+
+
+![Image 15](images/image_3/img_25.jpg)
+
+
 
 ```bash
 
@@ -74,3 +80,6 @@ Contact
 If you have any questions or feedback, you can reach us at uchralt.temuulen@charite.de
 
 Thank you for using BiancaPython! We hope you find it useful for your brain image processing and analysis tasks.
+
+
+
