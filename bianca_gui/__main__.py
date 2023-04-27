@@ -6,7 +6,7 @@ Created on Thu Apr 20 16:40:30 2023
 @author: temuuleu
 """
 
-from bianca_gui.single_gui import *
+from bianca_gui.bianca_gui import *
 from bianca_gui.config.config import Config
 
 #todo Logger
@@ -15,6 +15,7 @@ from bianca_gui.config.config import Config
 def main():  
     
     cfg = Config()
+
     #print(cfg.master_file_path)
     
     #check_master_file_list_path() 
