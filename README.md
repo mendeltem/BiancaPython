@@ -8,7 +8,7 @@ feature engineering, statistical analysis, and visualization.
 https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BIANCA
 
 
-![Image 15](images/image_3/img_15.jpg)
+![Image 15](images/image_3/img_17.jpg)
 
 
 
