@@ -19,7 +19,7 @@ def main():
     #print(cfg.master_file_path)
     
     #check_master_file_list_path() 
-    #create_bianca_gui()
+    create_bianca_gui()
     #create_option_table()
 
 if __name__ == "__main__":

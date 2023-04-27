@@ -174,10 +174,13 @@ def check_train_set():
     exit_button = tk.Button(new_window, text="Exit", command=close_new_window)
     
     # Create Listbox 2
-    label.grid(row=0, column=0, padx=0, pady=0) 
+
     selected_master_folder_button.grid(row=0, column=0, padx=0, pady=10) 
     select_masterfile_button.grid(row=0, column=1, padx=0, pady=0) 
     select_subject_button.grid(row=2, column=1, padx=0, pady=0) 
+    
+    
+    label.grid(row=3, column=0, padx=0, pady=0) 
     
     list_master_files.grid(row=1, column=0, padx=0, pady=0) 
     list_subject_files.grid(row=1, column=1, padx=0, pady=0)  
@@ -245,7 +248,12 @@ def select_image(Input_Image,bianca_input_param_dict):
 # Function to handle file selection
 def select_Masterfile(Input_MasterFile,bianca_input_param_dict):
     # Get the selected indices
-    image_file = filedialog.askopenfile()
+    
+    cfg = Config()
+    initial_directory = cfg.masterfile_dir_path   
+    image_file = filedialog.askopenfile(initialdir=initial_directory)
+    
+
     
     image_file_path = image_file.name
     print(f"masterfile_file {image_file_path}")
@@ -258,8 +266,7 @@ def select_Masterfile(Input_MasterFile,bianca_input_param_dict):
     
     
     
-    
-    
+ 
 # Function to handle file selection
 def select_Out_dir(Output_dir,bianca_input_param_dict):
     # Get the selected indices
@@ -268,13 +275,13 @@ def select_Out_dir(Output_dir,bianca_input_param_dict):
     image_dir = filedialog.askopenfile(initialdir=initial_directory)
     
     image_file_path = image_dir
-    print(f"oud_dir {image_file_path}")
+    print(f"oud_dir {image_dir}")
     
     # Clear existing items in the Listbox
     Output_dir.delete(0, tk.END)
-    Output_dir.insert(tk.END, os.path.basename(image_file_path))
+    Output_dir.insert(tk.END, os.path.basename(image_dir))
     
-    bianca_input_param_dict['out_put'] = image_file_path
+    bianca_input_param_dict['out_put'] = image_dir
 
 
 
@@ -285,14 +292,27 @@ def run_bianca_shell(bianca_input_param_dict):
     input_masterfile  = bianca_input_param_dict['input_masterfile']
     out_put  = bianca_input_param_dict['out_put']
     
+    out_put_file_name = "bianca_out.nii.gz"
+    bianca_output = os.path.join(out_put,out_put_file_name)
+    
     
     print(f"input image {bianca_input_param_dict['input_image']}")
     print(f"input matrix {bianca_input_param_dict['input_matrix']}")
     print(f"input masterfile {bianca_input_param_dict['input_masterfile']}")
     
+    
     print("run bianca")
-    run_bianca_cmd = f"run_bianca -image={input_image} -mni={input_matrix} -masterfile={input_masterfile} -output={out_put}"
+    run_bianca_cmd = f"run_bianca -image={input_image} -mni={input_matrix} -masterfile={input_masterfile} -output={bianca_output}"
+    
+    
+    print(run_bianca_cmd)
+    
+    
     os.system(f"{run_bianca_cmd}")
+    
+    
+    if os.path.isfile(bianca_output):
+        print("bianca success")
     
     print("end")
     
@@ -301,12 +321,25 @@ def run_bianca_shell(bianca_input_param_dict):
 def run_bianca_help(bianca_input_param_dict):
     
     
-    print(f"input image {bianca_input_param_dict['input_image']}")
-    print(f"input matrix {bianca_input_param_dict['input_matrix']}")
-    print(f"input masterfile {bianca_input_param_dict['input_masterfile']}")
+    input_image  = bianca_input_param_dict['input_image']
+    input_matrix  = bianca_input_param_dict['input_matrix']
+    input_masterfile  = bianca_input_param_dict['input_masterfile']
+    out_put  = bianca_input_param_dict['out_put']
     
-    print("run bianca")
+    out_put_file_name = "bianca_out.nii.gz"
+    bianca_output = os.path.join(out_put,out_put_file_name)
+    
+    
+    print(f"input image {input_image}")
+    print(f"input matrix {input_matrix}")
+    print(f"input masterfile {input_masterfile}")
+    
+    print(f"outputdir  {bianca_output}")
+    
+    
     run_bianca_cmd = f"run_bianca -h"
+    
+    print(run_bianca_cmd)
     os.system(f"{run_bianca_cmd}")
     
     print("end") 
@@ -326,10 +359,10 @@ def run_bianca_gui():
 
     global bianca_input_param_dict
     bianca_input_param_dict = {
-        "input_image" : "",
-        "input_matrix" : "",
-        "input_masterfile": "",
-        "out_put":"cfg.data_out_test_dir_path "}
+        "input_image" :      "",
+        "input_matrix" :     "",
+        "input_masterfile":  f"{cfg.masterfile_file_path}",
+        "out_put":           f"{cfg.data_out_test_dir_path}"}
     
     
     # Create a label in the new window
@@ -345,37 +378,47 @@ def run_bianca_gui():
 
     # Create a button to trigger file selection
     select_masterfile_button = tk.Button(new_window, text="Selected Master File", command= lambda: select_Masterfile(Input_MasterFile,bianca_input_param_dict))
+    select_out_button = tk.Button(new_window, text="Select Output Directory", command= lambda: select_Out_dir(Output_dir,bianca_input_param_dict))
+    
+    
+    label = tk.Label(new_window, text="Input Parameter:")
+    
+    
+    
     select_image_button = tk.Button(new_window, text="Select Input Image", command= lambda: select_image(Input_Image,bianca_input_param_dict))
     select_affine_button = tk.Button(new_window, text="Select Input Affine Matrix", command= lambda: select_mat(Input_Mat,bianca_input_param_dict))
     
-    select_out_button = tk.Button(new_window, text="Select Output Directory", command= lambda: select_Out_dir(Output_dir,bianca_input_param_dict))
+
     
 
     
     run_bianca_button = tk.Button(new_window, text="Run Bianca", command= lambda: run_bianca_shell(bianca_input_param_dict))
-    help_button = tk.Button(new_window, text="Help Bianca", command= lambda: run_bianca_shell(bianca_input_param_dict))
+    help_button = tk.Button(new_window, text="Help Bianca", command= lambda: run_bianca_help(bianca_input_param_dict))
 
     #pack Masterfile
     Input_MasterFile.grid(row=1, column=1, padx=0, pady=0)  
     select_masterfile_button.grid(row=1, column=2, padx=0, pady=0) 
 
     
-
+    
+    Output_dir.grid(row=2, column=1, padx=0, pady=0)  
+    select_out_button.grid(row=2, column=2, padx=0, pady=0) 
+    
+    
+    
     # Pack the text box widget to the window
-    Input_Image.grid(row=2, column=1, padx=0, pady=0)  
-    select_image_button.grid(row=2, column=2, padx=0, pady=0) 
+    Input_Image.grid(row=4, column=1, padx=0, pady=0)  
+    select_image_button.grid(row=4, column=2, padx=0, pady=0) 
     
     
     #select matrix
-    Input_Mat.grid(row=3, column=1, padx=0, pady=0)  
-    select_affine_button.grid(row=3, column=2, padx=0, pady=0) 
+    Input_Mat.grid(row=5, column=1, padx=0, pady=0)  
+    select_affine_button.grid(row=5, column=2, padx=0, pady=0) 
     
-    
-    Output_dir.grid(row=4, column=1, padx=0, pady=0)  
-    select_out_button.grid(row=4, column=2, padx=0, pady=0) 
 
-    run_bianca_button.grid(row=5, column=2, padx=0, pady=0) 
-    help_button.grid(row=6, column=2, padx=0, pady=0) 
+
+    run_bianca_button.grid(row=6, column=2, padx=0, pady=0) 
+    help_button.grid(row=7, column=2, padx=0, pady=0) 
     
         
     # Function to close the new window
@@ -385,7 +428,7 @@ def run_bianca_gui():
     exit_button = tk.Button(new_window, text="Exit", command=close_new_window)
     
     #list_subject_files.grid(row=1, column=1, padx=0, pady=0)  
-    exit_button.grid(row=3, column=3, padx=1, pady=1) 
+    exit_button.grid(row=8, column=2, padx=1, pady=1) 
     
     #debug
     new_window.mainloop()
@@ -417,8 +460,13 @@ def create_bianca_gui():
     file_menu.add_command(label="Exit", command=exit_main_window)
 
     # Create a button to open new window
-    button = tk.Button(root, text="Inspect Train Data", command=check_train_set)
-    button.pack()
+    button_train = tk.Button(root, text="Inspect Train Data", command=check_train_set)
+    button_train.pack()
+    
+    
+    # Create a button to open new window
+    button_run_bianca = tk.Button(root, text="Run Bianca", command=run_bianca_gui)
+    button_run_bianca.pack()
 
     # Create an exit button for the main window
     exit_button = tk.Button(root, text="Exit", command=exit_main_window)
@@ -430,7 +478,7 @@ def create_bianca_gui():
     
     
 # Call the create_bianca_gui() function to start the GUI
-run_bianca_gui()
+#run_bianca_gui()
 
 
 
