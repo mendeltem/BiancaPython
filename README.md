@@ -64,12 +64,19 @@ The following options can be used with the BIANCA shell script:
 - `-h`, `-help`: Show this help message and exit.
 
 
+
+
+
 ## Bianca from from GUI
 
 ```bash
 run_bianca_gui
 
 ```
+
+This command runs the BIANCA graphical User interface.
+
+
 
 
 
