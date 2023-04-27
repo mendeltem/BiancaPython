@@ -77,7 +77,7 @@ run_bianca_gui
 This command runs the BIANCA graphical User interface.
 
 
-![Image 15](images/GUI.jpg)
+![Image 15](images/GUI.PNG)
 
 
 
