@@ -42,7 +42,7 @@ BiancaPython is a software tool for brain image analysis. It provides functional
 You can use BiancaPython to perform brain image analysis with a command-line script. Here's an example command:
 
 ```bash
-run_bianca -image=tests/data_test/flair_image_bet.nii.gz -mni=tests/data_test/flair_to_mni.mat -masterfile=tests/data_test/Masterfiles/small_masterfile.txt -output="/home/temuuleu/bianca_output.nii"
+run_bianca -image=tests/data_test/flair_image_bet.nii.gz -mni=tests/data_test/flair_to_mni.mat -masterfile=tests/data_test/Masterfiles/small_masterfile.txt -output="tests/out_test/bianca_output.nii"
 
 ```
 
